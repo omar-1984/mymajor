@@ -1,31 +1,13 @@
-import React, { Component } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Grid,
-  Typography,
-  Link,
-  IconButton,
-} from "@material-ui/core";
+import React from "react";
+import { AppBar, Typography, Toolbar, IconButton } from "@material-ui/core";
 import CompareIcon from "@material-ui/icons/Compare";
 import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles } from "@material-ui/styles";
+import InfoIcon from "@material-ui/icons/Info";
+import FeedbackIcon from "@material-ui/icons/Feedback";
+import { makeStyles, fade } from "@material-ui/core/styles";
 import logo from "../logo.png";
-import "../App.css";
 
-const useStyles = makeStyles(() => ({
-  typographyStyle: {
-    flex: 1,
-    alignSelf: "center",
-  },
-  container: {
-    flexGrow: 1,
-  },
-  iconStyles: {
-    flex: 1,
-    alignSelf: "flex-end",
-  },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 const Header = () => {
   const classes = useStyles();
@@ -33,24 +15,23 @@ const Header = () => {
     <div className={classes.container}>
       <AppBar position="static" color="inherit">
         <Toolbar>
-          <Grid item sm={6} container direction="row-reverse">
-            <IconButton>
-              <CompareIcon className={classes.iconStyles}></CompareIcon>
-              <Typography className={classes.typographyStyle}>
-                Compare
-              </Typography>
-            </IconButton>
-            <IconButton>
-              <SearchIcon className={classes.iconStyles}></SearchIcon>
-              <Typography className={classes.typographyStyle}>
-                Search
-              </Typography>
-            </IconButton>
-            <Typography className={classes.typographyStyle}>Sell</Typography>
-            <Grid item sm={2} xs={0} />
-            <img src={logo} alt="logo" class="logo" />
-          </Grid>
-          <Grid item sm={4} xs={0} />
+          <img src={logo} alt="logo" className="logo" />
+          <IconButton>
+            <CompareIcon />
+            <Typography>Compare</Typography>
+          </IconButton>
+          <IconButton>
+            <SearchIcon />
+            <Typography>Search</Typography>
+          </IconButton>
+          <IconButton>
+            <InfoIcon />
+            <Typography>About</Typography>
+          </IconButton>
+          <IconButton>
+            <FeedbackIcon />
+            <Typography>Feedback</Typography>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
