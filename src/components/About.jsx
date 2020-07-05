@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import MediaCard from "./Card.jsx";
 import MilhemImg from "./pictures/Milhem.jpg";
 import AbdallahImg from "./pictures/Abdallah.jpg";
+import OmarImg from "./pictures/Omar.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ const About = () => {
             <MediaCard image={"#"} bio="this is Sireen" name="Sireen Qadah" />
           </Grid>
           <Grid item>
-            <MediaCard image={"#"} bio="this is Omar" name="Omar fetian" />
+            <MediaCard image={OmarImg} bio="this is Omar" name="Omar Fitian" />
           </Grid>
         </Grid>
       </Grid>
