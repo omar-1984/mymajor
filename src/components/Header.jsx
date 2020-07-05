@@ -4,8 +4,9 @@ import CompareIcon from "@material-ui/icons/Compare";
 import SearchIcon from "@material-ui/icons/Search";
 import InfoIcon from "@material-ui/icons/Info";
 import FeedbackIcon from "@material-ui/icons/Feedback";
-import { makeStyles, fade } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import logo from "../logo.png";
+import Link from "react-router-dom/Link";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -15,23 +16,33 @@ const Header = () => {
     <div className={classes.container}>
       <AppBar position="static" color="inherit">
         <Toolbar>
-          <img src={logo} alt="logo" className="logo" />
-          <IconButton>
-            <CompareIcon />
-            <Typography>Compare</Typography>
-          </IconButton>
-          <IconButton>
-            <SearchIcon />
-            <Typography>Search</Typography>
-          </IconButton>
-          <IconButton>
-            <InfoIcon />
-            <Typography>About</Typography>
-          </IconButton>
-          <IconButton>
-            <FeedbackIcon />
-            <Typography>Feedback</Typography>
-          </IconButton>
+          <Link to="/">
+            <img src={logo} alt="logo" className="logo" />
+          </Link>
+          <Link to="/Compare">
+            <IconButton>
+              <CompareIcon />
+              <Typography>Compare</Typography>
+            </IconButton>
+          </Link>
+          <Link to="/Search">
+            <IconButton>
+              <SearchIcon />
+              <Typography>Search</Typography>
+            </IconButton>
+          </Link>
+          <Link to="/About">
+            <IconButton>
+              <InfoIcon />
+              <Typography>About</Typography>
+            </IconButton>
+          </Link>
+          <Link to="/Feedback">
+            <IconButton>
+              <FeedbackIcon />
+              <Typography>Feedback</Typography>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
