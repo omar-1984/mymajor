@@ -22,11 +22,7 @@ export default function MediaCard(props) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.image}
-          title="Contemplative Reptile"
-        />
+        <CardMedia className={classes.media} image={props.image} title="" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.name}
