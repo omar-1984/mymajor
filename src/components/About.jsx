@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import MediaCard from "./Card.jsx";
 import MilhemImg from "./pictures/Milhem.jpg";
 import AbdallahImg from "./pictures/Abdallah.jpg";
-import OmarImg from "./pictures/Omar.jpg";
+import OmarImg from "./pictures/OmarNew.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily[2],
     flex: 1,
     fontSize: 70,
-  },
-  page: {
-    backgroundColor: "red",
   },
 }));
 
