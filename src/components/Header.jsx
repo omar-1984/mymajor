@@ -13,10 +13,11 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../logo.png";
 import Link from "react-router-dom/Link";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   Typography: {
-    color: "#61DAFB",
+    color: "#d0e0e3ff",
   },
   links: {
     textDecoration: "none",
@@ -37,6 +38,18 @@ const Header = () => {
             <img src={logo} alt="logo" className="logo" />
           </Link>
           <Grid container spacing={5} alignItems="center" justify="flex-end">
+            <Link to="/" className={Classes.links}>
+              <IconButton>
+                <Grid container item spacing={1}>
+                  <Grid item>
+                    <HomeIcon className={Classes.Typography} />
+                  </Grid>
+                  <Grid item>
+                    <Typography className={Classes.Typography}>Home</Typography>
+                  </Grid>
+                </Grid>
+              </IconButton>
+            </Link>
             <Link to="/Compare" className={Classes.links}>
               <IconButton>
                 <Grid container item spacing={1}>
