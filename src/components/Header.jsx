@@ -1,5 +1,11 @@
 import React from "react";
-import { AppBar, Typography, Toolbar, IconButton } from "@material-ui/core";
+import {
+  AppBar,
+  Typography,
+  Toolbar,
+  IconButton,
+  Grid,
+} from "@material-ui/core";
 import CompareIcon from "@material-ui/icons/Compare";
 import SearchIcon from "@material-ui/icons/Search";
 import InfoIcon from "@material-ui/icons/Info";
@@ -30,30 +36,64 @@ const Header = () => {
           <Link to="/" className={Classes.links}>
             <img src={logo} alt="logo" className="logo" />
           </Link>
-          <Link to="/Compare" className={Classes.links}>
-            <IconButton>
-              <CompareIcon className={Classes.Typography} />
-              <Typography className={Classes.Typography}>Compare</Typography>
-            </IconButton>
-          </Link>
-          <Link to="/Search" className={Classes.links}>
-            <IconButton>
-              <SearchIcon className={Classes.Typography} />
-              <Typography className={Classes.Typography}>Search</Typography>
-            </IconButton>
-          </Link>
-          <Link to="/About" className={Classes.links}>
-            <IconButton>
-              <InfoIcon className={Classes.Typography} />
-              <Typography className={Classes.Typography}>About</Typography>
-            </IconButton>
-          </Link>
-          <Link to="/Feedback" className={Classes.links}>
-            <IconButton>
-              <FeedbackIcon className={Classes.Typography} />
-              <Typography className={Classes.Typography}>Feedback</Typography>
-            </IconButton>
-          </Link>
+          <Grid container spacing={5} alignItems="center" justify="flex-end">
+            <Link to="/Compare" className={Classes.links}>
+              <IconButton>
+                <Grid container item spacing={1}>
+                  <Grid item>
+                    <CompareIcon className={Classes.Typography} />
+                  </Grid>
+                  <Grid item>
+                    <Typography className={Classes.Typography}>
+                      Compare
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </IconButton>
+            </Link>
+            <Link to="/Search" className={Classes.links}>
+              <IconButton>
+                <Grid container item spacing={1}>
+                  <Grid item>
+                    <SearchIcon className={Classes.Typography} />
+                  </Grid>
+                  <Grid item>
+                    <Typography className={Classes.Typography}>
+                      Search
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </IconButton>
+            </Link>
+            <Link to="/About" className={Classes.links}>
+              <IconButton>
+                <Grid container item spacing={1}>
+                  <Grid item>
+                    <InfoIcon className={Classes.Typography} />
+                  </Grid>
+                  <Grid item>
+                    <Typography className={Classes.Typography}>
+                      About
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </IconButton>
+            </Link>
+            <Link to="/Feedback" className={Classes.links}>
+              <IconButton>
+                <Grid container item spacing={1}>
+                  <Grid item>
+                    <FeedbackIcon className={Classes.Typography} />
+                  </Grid>
+                  <Grid item>
+                    <Typography className={Classes.Typography}>
+                      Feedback
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </IconButton>
+            </Link>
+          </Grid>
         </Toolbar>
       </AppBar>
     </div>
