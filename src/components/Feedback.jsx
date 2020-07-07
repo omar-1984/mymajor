@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
   },
   inputContainer: {
-    padding: "40px",
+    padding: "20px",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
