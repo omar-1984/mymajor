@@ -1,13 +1,13 @@
-import firebase from 'firebase';
+import firebase from "firebase";
 var firebaseConfig = {
-    apiKey: "AIzaSyB4cqq6Fe4iIRGgBhOf29Gzs-t5Vc9rFpg",
-    authDomain: "wajjihni-d455d.firebaseapp.com",
-    databaseURL: "https://wajjihni-d455d.firebaseio.com",
-    projectId: "wajjihni-d455d",
-    storageBucket: "wajjihni-d455d.appspot.com",
-    messagingSenderId: "1033540497678",
-    appId: "1:1033540497678:web:53c92e689e9d90fde7675f"
-  };
+  apiKey: "AIzaSyD6o9wXd-5XlJghrWjgOwYxdB2YscKeKPk",
+  authDomain: "mymajor-942d0.firebaseapp.com",
+  databaseURL: "https://mymajor-942d0.firebaseio.com",
+  projectId: "mymajor-942d0",
+  storageBucket: "mymajor-942d0.appspot.com",
+  messagingSenderId: "760544293666",
+  appId: "1:760544293666:web:092997295490bbe4382b7b",
+};
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth;
 export const db = firebase.database();
