@@ -62,59 +62,58 @@ const Feedback = () => {
 
   const classes = useStyles();
   return (
-    <Grid container className={classes.container}>
-      <MuiThemeProvider theme={theme}>
-        <Grid item xs={12} className={classes.container}>
-          <h1>Feedback</h1>
-        </Grid>
-        <Grid item xs={6} className={classes.container}>
-          <h3>Share your thoughts with our team!</h3>
-        </Grid>
-        <Grid item xs={12} className={classes.inputContainer}>
-          <TextField
-            label="Full Name"
-            variant="filled"
-            onChange={(event) => {
-              setFullName(event.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} className={classes.inputContainer}>
-          <TextField
-            label="E-mail"
-            variant="filled"
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} className={classes.inputContainer}>
-          <TextField
-            id="filled-multiline-static"
-            label="Feedback"
-            multiline
-            rows={6}
-            variant="filled"
-            style={{
-              width: "600px",
-            }}
-            onChange={(event) => {
-              setfeedbackText(event.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} className={classes.inputContainer}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-        </Grid>
-      </MuiThemeProvider>
-    </Grid>
+    <form onSubmit={handleSubmit}>
+      <Grid container className={classes.container}>
+        <MuiThemeProvider theme={theme}>
+          <Grid item xs={12} className={classes.container}>
+            <h1>Feedback</h1>
+          </Grid>
+          <Grid item xs={6} className={classes.container}>
+            <h3>Share your thoughts with our team!</h3>
+          </Grid>
+          <Grid item xs={12} className={classes.inputContainer}>
+            <TextField
+              required
+              label="Full Name"
+              variant="filled"
+              onChange={(event) => {
+                setFullName(event.target.value);
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.inputContainer}>
+            <TextField
+              label="E-mail"
+              variant="filled"
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.inputContainer}>
+            <TextField
+              required
+              id="filled-multiline-static"
+              label="Feedback"
+              multiline
+              rows={6}
+              variant="filled"
+              style={{
+                width: "600px",
+              }}
+              onChange={(event) => {
+                setfeedbackText(event.target.value);
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} className={classes.inputContainer}>
+            <Button type="submit" variant="contained" color="primary">
+              Submit
+            </Button>
+          </Grid>
+        </MuiThemeProvider>
+      </Grid>
+    </form>
   );
 };
 
