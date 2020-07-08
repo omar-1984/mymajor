@@ -18,7 +18,7 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     justifyContent: "center",
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   inputText: {
     color: "#61dafb",
   },
-});
+}));
 
 const Feedback = () => {
   const [fullName, setFullName] = useState("");
@@ -66,10 +66,19 @@ const Feedback = () => {
       <Grid container className={classes.container}>
         <MuiThemeProvider theme={theme}>
           <Grid item xs={12} className={classes.container}>
-            <h1>Feedback</h1>
+            <h1
+              style={{
+                fontFamily: theme.typography.fontFamily[2],
+                fontSize: 35,
+              }}
+            >
+              Feedback
+            </h1>
           </Grid>
           <Grid item xs={6} className={classes.container}>
-            <h3>Share your thoughts with our team!</h3>
+            <h3 style={{ fontFamily: theme.typography.fontFamily[2] }}>
+              Share your thoughts with our team!
+            </h3>
           </Grid>
           <Grid item xs={12} className={classes.inputContainer}>
             <TextField
