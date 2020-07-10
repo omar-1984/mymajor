@@ -3,8 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import MediaCard from "./Card.jsx";
 import MilhemImg from "./pictures/Milhem.jpg";
-import AbdallahImg from "./pictures/Abdallah.jpg";
+import AbdallahImg from "./pictures/Abdallah.jpeg";
 import OmarImg from "./pictures/OmarNew.jpg";
+import SireenImg from "./pictures/Sireen.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,22 +37,30 @@ const About = () => {
           <Grid item>
             <MediaCard
               image={AbdallahImg}
-              bio="this is abdallah"
+              bio="Front-end Developer"
               name="Abdallah Mahmoud"
             />
           </Grid>
           <Grid item>
             <MediaCard
               image={MilhemImg}
-              bio="this is Milhem"
+              bio="Back-end Developer"
               name="Mohamad Milhem"
             />
           </Grid>
           <Grid item>
-            <MediaCard image={"#"} bio="this is Sireen" name="Sireen Qadah" />
+            <MediaCard
+              image={SireenImg}
+              bio="Front-end Developer"
+              name="Sireen Qadah"
+            />
           </Grid>
           <Grid item>
-            <MediaCard image={OmarImg} bio="this is Omar" name="Omar Fitian" />
+            <MediaCard
+              image={OmarImg}
+              bio="Back-end Developer"
+              name="Omar Fitian"
+            />
           </Grid>
         </Grid>
       </Grid>
