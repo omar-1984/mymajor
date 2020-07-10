@@ -52,3 +52,7 @@
     transform: rotate(360deg);
   }
 }
+mark {
+  background-color: #20232a;
+  color: white;
+}
