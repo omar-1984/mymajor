@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Grid,
-  Typography,
   createMuiTheme,
   MuiThemeProvider,
   Button,
