@@ -11,7 +11,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import InfoIcon from "@material-ui/icons/Info";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../logo.png";
+import logo from "./pictures/logoWithoutName.png";
 import Link from "react-router-dom/Link";
 import HomeIcon from "@material-ui/icons/Home";
 
