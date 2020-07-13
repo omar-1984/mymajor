@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   AppBar: {
-    background: "#2E3B55",
+    background: "#20232a",
     position: "static",
   },
 }));

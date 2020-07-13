@@ -5,11 +5,9 @@ import NoSsr from "@material-ui/core/NoSsr";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
-
+import Searchphoto from "./searchphoto.png";
 const Label = styled("label")`
-  padding: 0 0 4px;
   line-height: 1.5;
-  display: block;
 `;
 
 const InputWrapper = styled("div")`
@@ -20,7 +18,8 @@ const InputWrapper = styled("div")`
   padding: 1px;
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: center;
+  text-align: center;
   &:hover {
     border-color: #40a9ff;
   }
@@ -41,6 +40,9 @@ const InputWrapper = styled("div")`
     border: 0;
     margin: 0;
     outline: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -62,7 +64,8 @@ const Tag = styled(({ label, onDelete, ...props }) => (
   padding: 0 4px 0 10px;
   outline: 0;
   overflow: hidden;
-
+  display: flex;
+  justify-content: center;
   &:focus {
     border-color: #40a9ff;
     background-color: #e6f7ff;
