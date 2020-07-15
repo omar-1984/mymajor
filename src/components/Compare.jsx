@@ -11,6 +11,8 @@ import Checkboxes from "./Checkboxes.js";
 const Compare = () => {
   return (
     <div>
+      <br></br>
+      <br></br>
       <h1>Compare Page</h1>
     </div>
   );
