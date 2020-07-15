@@ -5,7 +5,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
-import { db } from "../services/firebase.js";
+import { db } from "../services/firebase1.js";
 import {
   TextField,
   Grid,

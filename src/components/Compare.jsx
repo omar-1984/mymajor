@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,7 +7,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-<<<<<<< HEAD
 import { db } from "../services/firebase1.js";
 import {
   FormControl,
@@ -19,7 +18,6 @@ import {
   CircularProgress,
   Grid,
 } from "@material-ui/core";
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -35,95 +33,199 @@ const theme = createMuiTheme({
     },
   },
 });
-
 const StyledTableCell = withStyles((theme) => ({
-=======
-import Checkboxes from "./Checkboxes.js";
-const Compare = () => {
-  return (
-    <div>
-      <br></br>
-      <br></br>
-      <h1>Compare Page</h1>
-    </div>
-  );
-};
-const StyledTableCell = withStyles(theme => ({
-  
-  
->>>>>>> b77393f0a77fd80ad95e26a325e6ea46dcafebad
   head: {
-    backgroundColor: "black",
-    color: "white"
+    backgroundColor: "#2E3B55",
+    color: "white",
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 13,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
 }))(TableCell);
-
-const StyledTableRow = withStyles(theme => ({
+const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover
-    }
-  }
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
 }))(TableRow);
-
-function createData(name, CS, CE, IT) {
-  return { name, CS, CE, IT };
+function createData(name, first, second, third) {
+  return { name, first, second, third };
 }
-
-const rows = [
-  createData("Average", "80% or more", "80% or more","65% or more" , 4.0),
-  createData("Branch", "Scientific and industrial","Scientific and industrial","Scientific and industrial", 4.3),
-  createData("The number of years", "4 years", "3 or 4 years","From 3.5 to 5 years", 6.0),
-  createData("The number of hours", "128 hours","161 hours","129 hours","161 hours", 4.3),
-  createData("The price of hours ", "43 Jordanian dinars", "38 Jordanian dinars",  "15 Jordanian dinars", 3.9),
-  createData("The unemployment", "43% for males and 75% for females","83%","79.6", 3.9),
-  createData("Materials ", "Mathematics, programming and technology ", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
-];
-
 const useStyles = makeStyles({
   table: {
-    minWidth: 700
-  }
+    minWidth: 700,
+  },
+  container: {
+    padding: "20px",
+  },
+  loading: {
+    display: "flex",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    marginTop: "-50px",
+    marginLeft: "-100px",
+  },
 });
-
 export default function CustomizedTables() {
   const classes = useStyles();
+  const [majors, setMajors] = useState(null);
+  const [major1, setMajor1] = useState("");
+  const [major2, setMajor2] = useState("");
+  const [major3, setMajor3] = useState("");
+  const [dataReturned, setDataReturned] = useState(false);
+  const [rows, setrows] = useState([]);
+  var MajorsByName = new Object();
 
+  useEffect(() => {
+    console.log("hi");
+    db.firestore()
+      .collection("majors")
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // var dic = doc.data();
+
+          MajorsByName[doc.data().name] = doc.data();
+          // console.log(MajorsByName[doc.data().name]["average"]);
+          // console.log(doc.data().name);
+        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+      });
+  }, []);
+
+  const handleChange1 = (event) => {
+    setMajor1(event.target.value);
+    console.log(major1);
+    console.log("this is 1");
+    // createrows();
+  };
+  const handleChange2 = (event) => {
+    setMajor2(event.target.value);
+    console.log(major2);
+    // createrows();
+  };
+  const handleChange3 = (event) => {
+    // console.log(MajorsByName["Computer Engineering"]["average]);
+    setMajor3(event.target.value);
+    console.log(major3);
+    // createrows();
+  };
+
+  const createrows = () => {
+    console.log(major1);
+    console.log(MajorsByName[major1].average);
+
+    const rows1 = [
+      createData(
+        "Average",
+        MajorsByName["Computer Engineering"].average,
+        MajorsByName["Computer Engineering"].average,
+        37,
+        4.3
+      ),
+      createData("Employment Rate", 1231, 16.0, 24, 6.0),
+      createData("Years", 123, 3.7, 67, 4.3),
+      createData("Credit Hours", 123, 16.0, 49, 3.9),
+    ];
+    setrows(rows1);
+  };
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Magors</StyledTableCell>
-            <StyledTableCell align="center">CS</StyledTableCell>
-            <StyledTableCell align="center">CE</StyledTableCell>
-            <StyledTableCell align="center">IT</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
+    <MuiThemeProvider theme={theme}>
+      <TableContainer component={Paper} className={classes.container}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Majors</StyledTableCell>
+              <StyledTableCell align="left">
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ color: "#61dafb" }}></InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    style={{ color: "white" }}
+                    color="primary"
+                    value="Computer Science"
+                    onChange={handleChange1}>
+                    <MenuItem value="Computer Science">
+                      Computer Science
+                    </MenuItem>
+                    <MenuItem value="Computer Engineering">
+                      Computer Engineering
+                    </MenuItem>
+                    <MenuItem value="IT">Information Technology</MenuItem>
+                  </Select>
+                </FormControl>
               </StyledTableCell>
-              <StyledTableCell align="center">{row.CS}</StyledTableCell>
-              <StyledTableCell align="center">{row.CE}</StyledTableCell>
-              <StyledTableCell align="center">{row.IT}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <label for="Magors">Choose a Magor:</label>
-      <select name="Magors" id="Megors">
-        <option value="cs">computer science</option>
-        <option value="it">it</option>
-        <option value="ce">computer engineering</option>
-        <option value="eng">engineering</option>
-      </select>
-      
-    </TableContainer>
+              <StyledTableCell align="left">
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ color: "#61dafb" }}></InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    style={{ color: "white" }}
+                    color="primary"
+                    value="Computer Engineering"
+                    onChange={handleChange2}>
+                    <MenuItem value="Computer Science">
+                      Computer Science
+                    </MenuItem>
+                    <MenuItem value="Computer Engineering">
+                      Computer Engineering
+                    </MenuItem>
+                    <MenuItem value="IT">Information Technology</MenuItem>
+                  </Select>
+                </FormControl>
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    id="demo-simple-select-label"
+                    style={{ color: "#61dafb" }}></InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    style={{ color: "white" }}
+                    color="primary"
+                    value="IT"
+                    onChange={handleChange3}>
+                    <MenuItem value="Computer Science">
+                      Computer Science
+                    </MenuItem>
+                    <MenuItem value="Computer Engineering">
+                      Computer Engineering
+                    </MenuItem>
+                    <MenuItem value="IT">Information Technology</MenuItem>
+                  </Select>
+                </FormControl>
+              </StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="left">{row.first}</StyledTableCell>
+                <StyledTableCell align="left">{row.second}</StyledTableCell>
+                <StyledTableCell align="left">{row.third}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </MuiThemeProvider>
   );
 }

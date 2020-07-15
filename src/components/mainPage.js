@@ -4,7 +4,7 @@ import Header from "./Header";
 import About from "./About.jsx";
 import Home from "./Home.jsx";
 import Feedback from "./Feedback.jsx";
-import Compare from "./compare/Compare.jsx";
+import Compare from "./Compare.jsx";
 import Search from "./Search.jsx";
 import Footer from "./Footer.jsx";
 import { makeStyles } from "@material-ui/core/styles";
