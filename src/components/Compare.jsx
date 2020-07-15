@@ -25,7 +25,7 @@ const StyledTableCell = withStyles(theme => ({
     color: "white"
   },
   body: {
-    fontSize: 13
+    fontSize: 14
   }
 }))(TableCell);
 
@@ -48,7 +48,7 @@ const rows = [
   createData("The number of hours", "128 hours","161 hours","129 hours","161 hours", 4.3),
   createData("The price of hours ", "43 Jordanian dinars", "38 Jordanian dinars",  "15 Jordanian dinars", 3.9),
   createData("The unemployment", "43% for males and 75% for females","83%","79.6", 3.9),
-  createData("Materials ", "Mathematics, programming and technology", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
+  createData("Materials ", "Mathematics, programming and technology ", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
 ];
 
 const useStyles = makeStyles({
