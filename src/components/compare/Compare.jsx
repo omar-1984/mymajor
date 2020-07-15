@@ -26,16 +26,18 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, CS, CE, IT) {
+  return { name, CS, CE, IT };
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  createData("Average", "80% or more", "80% or more","65% or more" , 4.0),
+  createData("Branch", "Scientific and industrial","Scientific and industrial","Scientific and industrial", 4.3),
+  createData("The number of years", "4 years", "3 or 4 years","From 3.5 to 5 years", 6.0),
+  createData("The number of hours", "128 hours","161 hours","129 hours","161 hours", 4.3),
+  createData("The price of hours ", "43 Jordanian dinars", "38 Jordanian dinars",  "15 Jordanian dinars", 3.9),
+  createData("The unemployment", "43% for males and 75% for females","83%","79.6", 3.9),
+  createData("Materials ", "Mathematics, programming and technology ", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
 ];
 
 const useStyles = makeStyles({
@@ -56,11 +58,10 @@ export default function CustomizedTables() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+          <StyledTableCell>Magors</StyledTableCell>
+            <StyledTableCell align="center">CS</StyledTableCell>
+            <StyledTableCell align="center">CE</StyledTableCell>
+            <StyledTableCell align="center">IT</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,10 +70,9 @@ export default function CustomizedTables() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="center">{row.CS}</StyledTableCell>
+              <StyledTableCell align="center">{row.CE}</StyledTableCell>
+              <StyledTableCell align="center">{row.IT}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
