@@ -1,5 +1,4 @@
 import React from "react";
-import Checkboxes from "./Checkboxes.js";
 import Searchphoto from "./searchphoto.png";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -23,9 +22,7 @@ const Search = () => {
   return (
     <>
       <h1>Search Page</h1>
-      <div className={Classes.text}>
-        <Checkboxes />
-      </div>
+      <div className={Classes.text}></div>
       <div>
         <img src={Searchphoto} className={Classes.img} />
       </div>
