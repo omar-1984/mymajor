@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
   pageContainer: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "220vh",
   },
 
   contentWrap: {
     flex: 1,
+    minHeight: "120vh",
   },
 }));
 
