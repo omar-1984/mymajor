@@ -9,10 +9,10 @@ import SireenImg from "./pictures/Sireen.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxHeight: "60vh",
   },
   media: {
-    height: 140,
+    height: 170,
   },
   pageHeader: {
     fontFamily: theme.typography.fontFamily[2],
@@ -25,7 +25,7 @@ const About = () => {
   const Classes = useStyles();
 
   return (
-    <Grid container direction="row">
+    <Grid container direction="row" className={Classes.root}>
       <Grid item sm={1} xs={false}>
         {/* empty space on edges */}
       </Grid>

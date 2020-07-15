@@ -7,66 +7,23 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-<<<<<<< HEAD
-import { db } from "../services/firebase1.js";
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  createMuiTheme,
-  MuiThemeProvider,
-  CircularProgress,
-  Grid,
-} from "@material-ui/core";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#61dafb",
-      contrastText: "white",
-      icon: "white",
-    },
-    icon: {
-      color: "white",
-    },
-    secondary: {
-      main: "#61dafb",
-    },
-  },
-});
 
 const StyledTableCell = withStyles((theme) => ({
-=======
-import Checkboxes from "./Checkboxes.js";
-const Compare = () => {
-  return (
-    <div>
-      <br></br>
-      <br></br>
-      <h1>Compare Page</h1>
-    </div>
-  );
-};
-const StyledTableCell = withStyles(theme => ({
-  
-  
->>>>>>> b77393f0a77fd80ad95e26a325e6ea46dcafebad
   head: {
-    backgroundColor: "black",
-    color: "white"
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }))(TableCell);
 
-const StyledTableRow = withStyles(theme => ({
+const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover
-    }
-  }
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
 }))(TableRow);
 
 function createData(name, CS, CE, IT) {
@@ -85,26 +42,30 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700
-  }
+    minWidth: 600,
+  },
+  container: {
+    padding: "20px",
+    width: "96%",
+  },
 });
 
 export default function CustomizedTables() {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.container}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Magors</StyledTableCell>
+          <StyledTableCell>Magors</StyledTableCell>
             <StyledTableCell align="center">CS</StyledTableCell>
             <StyledTableCell align="center">CE</StyledTableCell>
             <StyledTableCell align="center">IT</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
@@ -116,14 +77,6 @@ export default function CustomizedTables() {
           ))}
         </TableBody>
       </Table>
-      <label for="Magors">Choose a Magor:</label>
-      <select name="Magors" id="Megors">
-        <option value="cs">computer science</option>
-        <option value="it">it</option>
-        <option value="ce">computer engineering</option>
-        <option value="eng">engineering</option>
-      </select>
-      
     </TableContainer>
   );
 }
