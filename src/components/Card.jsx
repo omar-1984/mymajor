@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
+    minWidth: 220,
     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.5)",
   },
   media: {
@@ -35,10 +36,10 @@ export default function MediaCard(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          love!
+          like!
         </Button>
         <Button size="small" color="primary">
-          this is my crush
+          this is my bio
         </Button>
       </CardActions>
     </Card>
