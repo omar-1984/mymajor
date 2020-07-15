@@ -5,7 +5,21 @@ import NoSsr from "@material-ui/core/NoSsr";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 import { db } from "../services/firebase.js";
+import {
+  TextField,
+  Grid,
+  createMuiTheme,
+  MuiThemeProvider,
+  Button,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  results: {
+    padding: "20px",
+  },
+}));
 
 const Label = styled("label")`
   padding: 0 0 4px;
@@ -129,6 +143,8 @@ const Listbox = styled("ul")`
 
 export default function CustomizedHook() {
   const ex = new Object();
+  const [resmajors, setResMajors] = useState([]);
+  const [finalres, setfinalres] = useState([]);
 
   useEffect(() => {
     db.firestore()
@@ -137,7 +153,8 @@ export default function CustomizedHook() {
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           var DataTags = doc.data().tags;
-          console.log(DataTags);
+          allmajors.push(doc.data());
+          // console.log(allmajors);
           // for (var tag in DataTags) {
           //   if (ex[tag] !== 1) {
           //     ex[tag] = 1;
@@ -175,6 +192,40 @@ export default function CustomizedHook() {
     getOptionLabel: (option) => option.title,
   });
 
+  const SearchNow = () => {
+    function custom_compare(a, b) {
+      return a.val - b.val;
+    }
+
+    var tagOn = new Object();
+    console.log(allmajors.length);
+
+    for (var tagg in value) {
+      var nametag = value[tagg]["title"];
+      tagOn[nametag] = 1;
+    }
+
+    for (var i = 0; i < allmajors.length; i++) {
+      var v = 0;
+      console.log(allmajors[i]);
+      for (var j = 0; j < allmajors[i].tags.length; j++) {
+        if (tagOn[allmajors[i].tags[j]] === 1) {
+          v++;
+        }
+      }
+      var temp = resmajors;
+
+      if (v > 0) {
+        temp.push({ name: allmajors[i].name, val: v });
+        setResMajors(temp);
+      }
+    }
+
+    temp.sort(custom_compare).reverse();
+    setResMajors(temp);
+    setfinalres(resmajors);
+  };
+
   return (
     <NoSsr>
       <h1>Search</h1>
@@ -205,9 +256,32 @@ export default function CustomizedHook() {
             ))}
           </Listbox>
         ) : null}
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          onClick={SearchNow}>
+          Search
+        </Button>
+      </div>
+
+      <div className="results">
+        <div>
+          {finalres.length > 0 ? (
+            finalres.map((theRes) => (
+              <div key={theRes.name}>
+                <h1>{theRes.name}</h1>
+                <h2>{theRes.val}</h2>
+              </div>
+            ))
+          ) : (
+            <h1>choose some tags!</h1>
+          )}
+        </div>
       </div>
     </NoSsr>
   );
 }
 
 const Subjects = [{ title: "example" }];
+const allmajors = [];
