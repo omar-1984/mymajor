@@ -48,7 +48,7 @@ const styles = (theme) => ({
   },
 });
 
-class Home extends React.Component {
+class Home extends Component {
   constructor() {
     super();
     this.state = { value: 0, text: "s" };
