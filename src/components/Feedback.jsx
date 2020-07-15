@@ -7,7 +7,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import { db } from "../services/firebase.js";
+import { db } from "../services/firebase1.js";
 
 const theme = createMuiTheme({
   palette: {
