@@ -53,8 +53,8 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
-function createData(name, first, second, third) {
-  return { name, first, second, third };
+function createData(name, CS, CE, IT) {
+  return { name, CS, CE, IT };
 }
 const useStyles = makeStyles({
   table: {
@@ -131,10 +131,15 @@ export default function CustomizedTables() {
         37,
         4.3
       ),
-      createData("Employment Rate", 1231, 16.0, 24, 6.0),
-      createData("Years", 123, 3.7, 67, 4.3),
-      createData("Credit Hours", 123, 16.0, 49, 3.9),
+        createData("Average", "80% or more", "80% or more","65% or more" , 4.0),
+        createData("Branch", "Scientific and industrial","Scientific and industrial","Scientific and industrial", 4.3),
+        createData("The number of years", "4 years", "3 or 4 years","From 3.5 to 5 years", 6.0),
+        createData("The number of hours", "128 hours","161 hours","129 hours","161 hours", 4.3),
+        createData("The price of hours ", "43 Jordanian dinars", "38 Jordanian dinars",  "15 Jordanian dinars", 3.9),
+        createData("The unemployment", "43% for males and 75% for females","83%","79.6%", 3.9),
+        createData("Materials ", "Mathematics, programming and technology ", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
     ];
+
     setrows(rows1);
   };
   return (
@@ -218,12 +223,24 @@ export default function CustomizedTables() {
                 <StyledTableCell component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="left">{row.first}</StyledTableCell>
-                <StyledTableCell align="left">{row.second}</StyledTableCell>
-                <StyledTableCell align="left">{row.third}</StyledTableCell>
+                <StyledTableCell align="left">{row.CS}</StyledTableCell>
+                <StyledTableCell align="left">{row.CE}</StyledTableCell>
+                <StyledTableCell align="left">{row.IT}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
+          <TableBody>
+          {rows.map((row) => (
+            <StyledTableRow key={row.name}>
+              <StyledTableCell component="th" scope="row">
+                {row.name}
+              </StyledTableCell>
+              <StyledTableCell align="center">{row.CS}</StyledTableCell>
+              <StyledTableCell align="center">{row.CE}</StyledTableCell>
+              <StyledTableCell align="center">{row.IT}</StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
         </Table>
       </TableContainer>
     </MuiThemeProvider>
