@@ -79,7 +79,7 @@ export default function CustomizedTables() {
   const [major2, setMajor2] = useState("");
   const [major3, setMajor3] = useState("");
   const [dataReturned, setDataReturned] = useState(false);
-  const [rows, setrows] = useState([]);
+  // const [rows, setrows] = useState([]);
   var MajorsByName = new Object();
 
   useEffect(() => {
@@ -119,29 +119,53 @@ export default function CustomizedTables() {
     // createrows();
   };
 
-  const createrows = () => {
-    console.log(major1);
-    console.log(MajorsByName[major1].average);
+  const rows = [
+    createData("Average", "80% or more", "80% or more", "65% or more", 4.0),
+    createData(
+      "Branch",
+      "Scientific and industrial",
+      "Scientific and industrial",
+      "Scientific and industrial",
+      4.3
+    ),
+    createData(
+      "The number of years",
+      "4 years",
+      "3 or 4 years",
+      "From 3.5 to 5 years",
+      6.0
+    ),
+    createData(
+      "The number of hours",
+      "128 hours",
+      "161 hours",
+      "129 hours",
+      "161 hours",
+      4.3
+    ),
+    createData(
+      "The price of hours ",
+      "43 Jordanian dinars",
+      "38 Jordanian dinars",
+      "15 Jordanian dinars",
+      3.9
+    ),
+    createData(
+      "The unemployment",
+      "43% for males and 75% for females",
+      "83%",
+      "79.6%",
+      3.9
+    ),
+    createData(
+      "Materials ",
+      "Mathematics, programming and technology ",
+      "Mathematics, programming and technology",
+      "Mathematics, electronics, electronics maintenance and programming",
+      3.9
+    ),
+  ];
 
-    const rows1 = [
-      createData(
-        "Average",
-        MajorsByName["Computer Engineering"].average,
-        MajorsByName["Computer Engineering"].average,
-        37,
-        4.3
-      ),
-        createData("Average", "80% or more", "80% or more","65% or more" , 4.0),
-        createData("Branch", "Scientific and industrial","Scientific and industrial","Scientific and industrial", 4.3),
-        createData("The number of years", "4 years", "3 or 4 years","From 3.5 to 5 years", 6.0),
-        createData("The number of hours", "128 hours","161 hours","129 hours","161 hours", 4.3),
-        createData("The price of hours ", "43 Jordanian dinars", "38 Jordanian dinars",  "15 Jordanian dinars", 3.9),
-        createData("The unemployment", "43% for males and 75% for females","83%","79.6%", 3.9),
-        createData("Materials ", "Mathematics, programming and technology ", "Mathematics, programming and technology", "Mathematics, electronics, electronics maintenance and programming", 3.9)
-    ];
-
-    setrows(rows1);
-  };
   return (
     <MuiThemeProvider theme={theme}>
       <TableContainer component={Paper} className={classes.container}>
@@ -229,18 +253,6 @@ export default function CustomizedTables() {
               </StyledTableRow>
             ))}
           </TableBody>
-          <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.CS}</StyledTableCell>
-              <StyledTableCell align="center">{row.CE}</StyledTableCell>
-              <StyledTableCell align="center">{row.IT}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
         </Table>
       </TableContainer>
     </MuiThemeProvider>

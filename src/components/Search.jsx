@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   results: {
     padding: "20px",
   },
+  center: {
+    paddingLeft: "350px",
+  },
 }));
 
 const Label = styled("label")`
@@ -125,6 +128,7 @@ const Listbox = styled("ul")`
 `;
 
 export default function CustomizedHook() {
+  const Classes = useStyles();
   const ex = new Object();
   const [resmajors, setResMajors] = useState([]);
   const [finalres, setfinalres] = useState([]);
@@ -212,58 +216,63 @@ export default function CustomizedHook() {
   };
 
   return (
-    <NoSsr>
-      <h1>Search</h1>
-      <div>
-        <div {...getRootProps()}>
-          <Label {...getInputLabelProps()}>
-            <h2>Choose your favorite Subjects from the subjects below:</h2>
-            <mark>
-              (Try to choose a few options no more than 3 to give you an
-              efficient result)
-            </mark>
-          </Label>
-          <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
-            {value.map((option, index) => (
-              <Tag label={option.title} {...getTagProps({ index })} />
-            ))}
-            <input {...getInputProps()} />
-          </InputWrapper>
-        </div>
-        {groupedOptions.length > 0 ? (
-          <Listbox {...getListboxProps()}>
-            {groupedOptions.map((option, index) => (
-              <li {...getOptionProps({ option, index })}>
-                <span>{option.title}</span>
-                <CheckIcon fontSize="small" />
-              </li>
-            ))}
-          </Listbox>
-        ) : null}
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          onClick={SearchNow}>
-          Search
-        </Button>
-      </div>
-
-      <div className="results">
+    <div className={Classes.center}>
+      <NoSsr>
+        <h1>Search</h1>
         <div>
-          {finalres.length > 0 ? (
-            finalres.map((theRes) => (
-              <div key={theRes.name}>
-                <h1>{theRes.name}</h1>
-                <h2>{theRes.val}</h2>
-              </div>
-            ))
-          ) : (
-            <h1>choose some tags!</h1>
-          )}
+          <div {...getRootProps()}>
+            <Label {...getInputLabelProps()}>
+              <h2>Choose your favorite Subjects from the subjects below:</h2>
+              <mark>
+                (Try to choose a few options no more than 3 to give you an
+                efficient result)
+              </mark>
+            </Label>
+            <InputWrapper
+              ref={setAnchorEl}
+              className={focused ? "focused" : ""}>
+              {value.map((option, index) => (
+                <Tag label={option.title} {...getTagProps({ index })} />
+              ))}
+              <input {...getInputProps()} />
+            </InputWrapper>
+          </div>
+          {groupedOptions.length > 0 ? (
+            <Listbox {...getListboxProps()}>
+              {groupedOptions.map((option, index) => (
+                <li {...getOptionProps({ option, index })}>
+                  <span>{option.title}</span>
+                  <CheckIcon fontSize="small" />
+                </li>
+              ))}
+            </Listbox>
+          ) : null}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={SearchNow}>
+            Search
+          </Button>
         </div>
-      </div>
-    </NoSsr>
+
+        <div className="results">
+          <div>
+            {finalres.length > 0 ? (
+              finalres.map((theRes) => (
+                <div key={theRes.name}>
+                  <h4>
+                    {theRes.name}, number of matching tags is {theRes.val}
+                  </h4>
+                </div>
+              ))
+            ) : (
+              <h1>choose some tags!</h1>
+            )}
+          </div>
+        </div>
+      </NoSsr>
+    </div>
   );
 }
 
